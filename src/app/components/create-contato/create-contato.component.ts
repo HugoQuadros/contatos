@@ -33,4 +33,8 @@ export class CreateContatoComponent implements OnInit {
     this.novoContato.telefones.push("");
   }
 
+  removeTelefone(pos:number):void{
+    this.novoContato.telefones.splice(pos,1)
+  }
+
 }
