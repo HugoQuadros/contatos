@@ -9,6 +9,10 @@ export class AppComponent {
   mostrandoModal = false;
   title = 'contatos';
 
+  hide(){
+    this.mostrandoModal = false;
+  }
+
   mostrarModal(){
     console.log("Eute escutei, meu filho");
     this.mostrandoModal = true;
