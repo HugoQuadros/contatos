@@ -6,6 +6,25 @@ import { Contato } from '../models/contato'
 })
 export class ContatoService {
 
+  private baseDeContatos:Contato[];
+  private chave:string = "CONTATOS"
+
+  constructor() { 
+
+    // carregando informação do localStorage na chave CONTATOS
+    let dados = window.localStorage.getItem(this.chave);
+
+    if(dados){
+      // se existe alguma coisa no localStorage, transforma a string em um array de contatos (JSON.parse) e guarda em baseDeContatos
+      this.baseDeContatos = JSON.parse(dados);
+    }
+    else{
+      // se não existe, adiciona um array vazio no localStorage e na baseDeContatos
+      this.baseDeContatos = [];
+      window.localStorage.setItem(this.chave, "[]");
+    }
+   }
+
   baseDeContato: Contato[] = [
     {
       nome: "Zé das Couve",
@@ -50,13 +69,15 @@ export class ContatoService {
   ]
 
   getContatos(): Contato[] {
-    return this.baseDeContato;
+    return this.baseDeContatos;
   }
 
   addContato(c:Contato):void{
-    this.baseDeContato.push(c);
+    // adiciona a tarefa na baseDeContatos
+    this.baseDeContatos.push(c);
+    // atualiza o localStorage com a baseDeContatos nova
+    window.localStorage.setItem(this.chave, JSON.stringify(this.baseDeContatos));
   }
 
-  constructor() { }
 }
 
