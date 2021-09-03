@@ -1,83 +1,68 @@
 import { Injectable } from '@angular/core';
-import { Contato } from '../models/contato'
+import { Contato } from '../models/Contato';
+
+const BASE_DE_CONTATOS:Contato[] = [
+  {
+    nome: "Mariana Ribeiro 1",
+    email: "mariana@teste.com",
+    telefones: ['1111 - 1111','1111 - 1111','1111 - 1111']
+  },
+  {
+    nome: "Mariana Ribeiro 2",
+    email: "mariana@teste.com",
+    telefones: ['2222 - 2222']
+  },
+  {
+    nome: "Mariana Ribeiro 3",
+    email: "mariana@teste.com",
+    telefones: ['3333 - 3333']
+  },
+  {
+    nome: "Mariana Ribeiro 4",
+    email: "mariana@teste.com",
+    telefones: ['4444 - 4444']
+  },
+  {
+    nome: "Mariana Ribeiro 5",
+    email: "mariana@teste.com",
+    telefones: ['5555 - 5555']
+  },
+  {
+    nome: "Mariana Ribeiro 6",
+    email: "mariana@teste.com",
+    telefones: ['6666 - 6666']
+  },
+  {
+    nome: "Mariana Ribeiro 9",
+    email: "mariana@teste.com",
+    telefones: ['9999 - 9999']
+  },
+  {
+    nome: "Mariana Ribeiro 7",
+    email: "mariana@teste.com",
+    telefones: ['7777 - 7777']
+  },
+  {
+    nome: "Mariana Ribeiro 8",
+    email: "mariana@teste.com",
+    telefones: ['8888 - 8888']
+  },
+]
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContatoService {
 
-  private baseDeContatos:Contato[];
-  private chave:string = "CONTATOS"
+  constructor() { }
 
-  constructor() { 
-
-    // carregando informação do localStorage na chave CONTATOS
-    let dados = window.localStorage.getItem(this.chave);
-
-    if(dados){
-      // se existe alguma coisa no localStorage, transforma a string em um array de contatos (JSON.parse) e guarda em baseDeContatos
-      this.baseDeContatos = JSON.parse(dados);
-    }
-    else{
-      // se não existe, adiciona um array vazio no localStorage e na baseDeContatos
-      this.baseDeContatos = [];
-      window.localStorage.setItem(this.chave, "[]");
-    }
-   }
-
-  baseDeContato: Contato[] = [
-    {
-      nome: "Zé das Couve",
-      email: "zedascouve@teste.com",
-      telefones: ["99999-9999"]
-    },
-    {
-      nome: "Zé das Couve 2",
-      email: "zedascouve@teste.com",
-      telefones: ["98888-8888", "99999-9999", "99999-9999"]
-    },
-    {
-      nome: "Zé das Couve 3",
-      email: "zedascouve@teste.com",
-      telefones: ["97777-7777"]
-    },
-    {
-      nome: "Zé das Couve 4",
-      email: "zedascouve@teste.com",
-      telefones: ["96666-6666"]
-    },
-    {
-      nome: "Zé das Couve 5",
-      email: "zedascouve@teste.com",
-      telefones: ["95555-5555"]
-    },
-    {
-      nome: "Zé das Couve 6",
-      email: "zedascouve@teste.com",
-      telefones: ["94444-4444"]
-    },
-    {
-      nome: "Zé das Couve 7",
-      email: "zedascouve@teste.com",
-      telefones: ["93333-3333"]
-    },
-    {
-      nome: "Zé das Couve 8",
-      email: "zedascouve@teste.com",
-      telefones: ["92222-2222"]
-    }
-  ]
-
-  getContatos(): Contato[] {
-    return this.baseDeContatos;
+  getContatos():Contato[] {
+    console.log(Math.random())
+    return BASE_DE_CONTATOS;
   }
 
-  addContato(c:Contato):void{
-    // adiciona a tarefa na baseDeContatos
-    this.baseDeContatos.push(c);
-    // atualiza o localStorage com a baseDeContatos nova
-    window.localStorage.setItem(this.chave, JSON.stringify(this.baseDeContatos));
+  addContato(c:Contato): void {
+    BASE_DE_CONTATOS.push(c);
   }
 
 }
-

@@ -6,15 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  mostrandoModal = false;
   title = 'contatos';
-
-  hide(){
-    this.mostrandoModal = false;
-  }
+  mostrandoModal = false;
 
   mostrarModal(){
-    console.log("Eute escutei, meu filho");
     this.mostrandoModal = true;
+  }
+
+  esconderModal(){
+    this.mostrandoModal = false;
   }
 }

@@ -14,7 +14,7 @@ body {
     background-color: #212121;
     color: #CCC;
     height: 100%;
-    background-image: url(./assets/img/bg.jpg);
+    background-image: url(assets/img/bg.jpg);
     background-size:cover;
     background-attachment: fixed;
 }
@@ -92,4 +92,3 @@ a {
 a:hover{
     color: #CCC;
 }
-
